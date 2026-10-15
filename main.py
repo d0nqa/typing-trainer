@@ -1,6 +1,6 @@
 from nicegui import ui
+from pages.home import create_home_page
 
-ui.label('Тренажёр слепой печати')
-ui.button('Начать обучение')
+create_home_page()
 
 ui.run()
