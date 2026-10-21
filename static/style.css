@@ -178,3 +178,297 @@ body {
     border-radius: 8px;
     padding: 8px 12px;
 }
+
+
+.practice-page {
+    width: 100%;
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 22px 35px 30px;
+    gap: 0;
+}
+
+
+.practice-navbar {
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 38px;
+}
+
+
+.practice-logo {
+    color: #B49CFF;
+    font-size: 28px;
+}
+
+
+.practice-logo-text {
+    color: #B49CFF;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+.q-btn.practice-back-button {
+    background-color: #30343C !important;
+    color: #E6E9EF !important;
+    border: 1px solid #616670;
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+
+.practice-text-container {
+    width: 100%;
+    min-height: 180px;
+    background-color: #383C45;
+    border: 1px solid #616670;
+    border-radius: 13px;
+    padding: 26px;
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+
+.practice-keyboard-container {
+    width: 100%;
+    min-height: 260px;
+    background-color: #383C45;
+    border: 1px solid #616670;
+    border-radius: 13px;
+    padding: 22px;
+}
+
+
+.practice-text {
+    display: block;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 2;
+    color: #858C99;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
+
+
+.practice-character {
+    display: inline;
+    color: #858C99;
+}
+
+
+.practice-character.practice-current {
+    background-color: #B49CFF;
+    color: #22252B;
+    border-radius: 3px;
+}
+
+
+.practice-character.practice-correct {
+    color: #E6E9EF;
+}
+
+
+.practice-character.practice-error {
+    color: #F26D6D;
+    background-color: #6D333950;
+    border-radius: 2px;
+}
+
+
+.practice-results {
+    width: 100%;
+    align-items: center;
+    gap: 20px;
+    padding: 16px;
+}
+
+
+.practice-results-icon {
+    color: #B49CFF;
+    font-size: 64px;
+}
+
+
+.practice-results-title {
+    color: #E6E9EF;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+}
+
+
+.practice-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    gap: 16px;
+}
+
+
+.practice-stat {
+    width: 100%;
+    min-width: 0;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    text-align: center;
+}
+
+
+.practice-stat-value {
+    color: #B49CFF;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+
+.practice-stat-name {
+    color: #AEB5C2;
+    font-size: 12px;
+}
+
+
+.q-btn.practice-restart-button {
+    align-self: center;
+    width: 230px;
+    max-width: 100%;
+    min-height: 48px;
+    background-color: #2D323A !important;
+    color: #E6E9EF !important;
+    border: 1px solid #616670 !important;
+    border-radius: 8px;
+}
+
+
+.q-btn.practice-next-button {
+    align-self: center;
+    width: 230px;
+    max-width: 100%;
+    min-height: 48px;
+    background-color: #B49CFF !important;
+    color: #22252B !important;
+    border: 1px solid #B49CFF;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+
+.keyboard-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: 4px;
+}
+
+
+.keyboard-key {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    background-color: #282D39;
+    color: #E6E9EF;
+    border: 1px solid #687483;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 0;
+}
+
+
+.keyboard-wide {
+    flex: 1.6;
+}
+
+
+.keyboard-shift {
+    flex: 1;
+}
+
+
+.keyboard-space {
+    flex: 4;
+}
+
+
+.key-pinky {
+    border-color: #F26D6D;
+}
+
+
+.key-ring {
+    border-color: #F4A261;
+}
+
+
+.key-middle {
+    border-color: #EDC66E;
+}
+
+
+.key-index {
+    border-color: #7BA9ED;
+}
+
+
+.key-thumb {
+    border-color: #A78BFA;
+}
+
+
+.keyboard-key.keyboard-active {
+    background-color: #B49CFF;
+    color: #22252B;
+    border-color: #DCCFFF;
+    font-weight: 700;
+}
+
+
+.keyboard-legend {
+    width: 100%;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+
+.keyboard-legend-item {
+    align-items: center;
+    gap: 6px;
+    color: #B4BBC7;
+    font-size: 12px;
+}
+
+
+.keyboard-legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+
+.keyboard-finger-hint {
+    width: 100%;
+    align-items: center;
+    gap: 4px;
+    margin-top: 12px;
+}
+
+
+.keyboard-finger-hint> :first-child {
+    color: #AEB5C2;
+    font-size: 13px;
+}
+
+
+.keyboard-finger-hint> :last-child {
+    color: #B49CFF;
+    font-size: 16px;
+    font-weight: 700;
+}

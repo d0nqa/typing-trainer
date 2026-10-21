@@ -1,3 +1,4 @@
+import os
 from nicegui import ui
 from pathlib import Path
 from pages.home import create_home_page
@@ -28,4 +29,6 @@ def settings():
     create_settings_page()
 
 
-ui.run()
+ui.run(storage_secret=os.environ.get(
+    'STORAGE_SECRET', 'typing-trainer-local-dev'
+    ))
