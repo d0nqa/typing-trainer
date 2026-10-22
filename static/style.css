@@ -48,7 +48,7 @@ body {
     width: 230px;
     height: 48px;
     border-radius: 8px;
-    font-size: 700;
+    font-weight: 700;
 }
 
 
@@ -58,7 +58,7 @@ body {
     width: 230px;
     height: 48px;
     border-radius: 8px;
-    font-size: 500;
+    font-weight: 500;
 }
 
 
@@ -153,21 +153,8 @@ body {
 .lessons-navbar {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-}
-
-
-.lessons-logo {
-    color: #B49CFF;
-    font-size: 28px;
-}
-
-
-.lessons-logo-text {
-    color: #B49CFF;
-    font-size: 16px;
-    font-weight: 700;
 }
 
 
@@ -192,21 +179,8 @@ body {
 .practice-navbar {
     width: 100%;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     margin-bottom: 38px;
-}
-
-
-.practice-logo {
-    color: #B49CFF;
-    font-size: 28px;
-}
-
-
-.practice-logo-text {
-    color: #B49CFF;
-    font-size: 16px;
-    font-weight: 700;
 }
 
 
@@ -471,4 +445,147 @@ body {
     color: #B49CFF;
     font-size: 16px;
     font-weight: 700;
+}
+
+
+.settings-page {
+    width: 100%;
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 22px 35px 30px;
+    align-items: center;
+}
+
+
+.settings-navbar {
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+
+.q-btn.settings-back-button {
+    background-color: #30343C !important;
+    color: #E6E9EF !important;
+    border: 1px solid #616670;
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+
+.settings-title {
+    color: #E6E9EF;
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 32px;
+    margin-bottom: 24px;
+}
+
+
+.settings-card {
+    width: 100%;
+    max-width: 670px;
+    background-color: #383C45;
+    border: 1px solid #616670;
+    border-radius: 16px;
+    padding: 24px;
+    gap: 16px;
+}
+
+
+.settings-card-header {
+    align-items: center;
+    color: #E6E9EF;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+.settings-card-header .q-icon {
+    color: #B49CFF;
+    font-size: 24px;
+}
+
+
+.settings-description {
+    color: #AEB5C2;
+    font-size: 14px;
+}
+
+
+.settings-language-options {
+    width: 100%;
+    gap: 12px;
+}
+
+
+.settings-language-active,
+.settings-language-disabled {
+    flex: 1;
+    min-width: 0;
+    min-height: 60px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    gap: 8px;
+}
+
+
+.settings-language-active {
+    background-color: #49415D;
+    border: 2px solid #B49CFF;
+    color: #E6E9EF;
+    font-weight: 700;
+}
+
+
+.settings-language-active .q-icon {
+    color: #B49CFF;
+}
+
+
+.settings-language-disabled {
+    background-color: #30343C;
+    border: 1px solid #50545D;
+    color: #858C99;
+}
+
+
+.settings-soon {
+    font-size: 11px;
+    color: #858C99;
+}
+
+
+.settings-toggle-content {
+    width: 100%;
+    gap: 6px;
+}
+
+
+.settings-toggle-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+
+.settings-toggle-description {
+    flex: 1;
+    gap: 6px;
+    color: #E6E9EF;
+}
+
+
+.settings-keyboard-switch {
+    color: #B49CFF !important;
+    margin: 0;
+}
+
+
+.settings-keyboard-switch .q-toggle__inner--truthy {
+    color: #B49CFF !important;
 }

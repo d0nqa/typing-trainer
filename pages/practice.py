@@ -1,5 +1,5 @@
 import time
-from nicegui import ui
+from nicegui import ui, app
 from html import escape
 from text_manager import get_random_text
 
@@ -12,6 +12,7 @@ def create_practice_page():
     typing_results = []
     start_time = None
     keyboard_keys = {}
+    show_keyboard = app.storage.user.get('show_keyboard', True)
     
     left_hand_keys = {
         'Ё', '1', '2', '3', '4', '5',
@@ -99,10 +100,6 @@ def create_practice_page():
     with ui.column().classes('practice-page'):
 
         with ui.row().classes('practice-navbar'):
-            with ui.row().classes('items-center'):
-                ui.icon('keyboard').classes('practice-logo')
-                ui.label('typing trainer').classes('practice-logo-text')
-
             ui.button('На главную',icon='arrow_back',
                 on_click=lambda: ui.navigate.to('/')
             ).props('flat color=none no-caps').classes('practice-back-button')
@@ -242,9 +239,12 @@ def create_practice_page():
                     'Начать заново',
                     on_click=restart_practice
                     ).props('color=none no-caps unelevated').classes('practice-restart-button')
-             
+          
         
-        with ui.column().classes('practice-keyboard-container'):
+        keyboard_container = ui.column().classes('practice-keyboard-container')
+        keyboard_container.set_visibility(show_keyboard)
+        
+        with keyboard_container:
             ui.label('КЛАВИАТУРА')
 
             

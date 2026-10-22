@@ -40,12 +40,7 @@ def create_review(title, review_type, number):
 
 def create_lessons_page():
     with ui.column().classes('lessons-page'):
-        
         with ui.row().classes('lessons-navbar'):
-            with ui.row().classes('items-center'):
-                ui.icon('keyboard').classes('lessons-logo')
-                ui.label('typing trainer').classes('lessons-logo-text')
-
             ui.button('На главную',icon='arrow_back',
                       on_click=lambda: ui.navigate.to('/')
             ).props('flat color=none no-caps').classes('lessons-back-button')
