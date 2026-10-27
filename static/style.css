@@ -1,6 +1,7 @@
 body {
     background-color: #22252B;
     color: #E6E9EF;
+    margin: 0;
 }
 
 
@@ -171,7 +172,7 @@ body {
     width: 100%;
     max-width: 1020px;
     margin: 0 auto;
-    padding: 22px 35px 30px;
+    padding: 8px 35px 8px;
     gap: 0;
 }
 
@@ -180,7 +181,7 @@ body {
     width: 100%;
     align-items: center;
     justify-content: flex-end;
-    margin-bottom: 38px;
+    margin-bottom: 12px;
 }
 
 
@@ -200,7 +201,7 @@ body {
     border: 1px solid #616670;
     border-radius: 13px;
     padding: 26px;
-    margin-bottom: 32px;
+    margin-bottom: 16px;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -588,4 +589,9 @@ body {
 
 .settings-keyboard-switch .q-toggle__inner--truthy {
     color: #B49CFF !important;
+}
+
+
+body:has(.practice-page) .nicegui-content {
+    padding: 0;
 }
