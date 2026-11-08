@@ -2,12 +2,29 @@ import time
 from nicegui import ui, app
 from html import escape
 from text_manager import get_random_text
+from lesson_generator import generate_lesson_text, generate_review_text
+from lesson_data import LESSONS
+from progress_manager import complete_level, complete_review
 
 
-def create_practice_page():
+def create_practice_page(
+    lesson: int = 0,
+    level: int = 1,
+    review: int = 0,
+    review_type: str = ''
+    ): #создает страницу тренировки
     
-    selected_text = get_random_text()
-    practice_text = selected_text['text']
+    if 1 <= review <= len(LESSONS) and review_type in ('pair', 'all'):
+        practice_text = generate_review_text(review, review_type)
+        
+    elif 1 <= lesson <= len(LESSONS):
+        letters = LESSONS[lesson - 1]
+        practice_text = generate_lesson_text(letters, level)
+    
+    else:
+        selected_text = get_random_text()
+        practice_text = selected_text['text']
+    
     current_position = 0
     typing_results = []
     start_time = None
@@ -47,7 +64,7 @@ def create_practice_page():
         
         expected_char = practice_text[current_position]
         
-        is_correct = key_name.lower() == expected_char.lower()
+        is_correct = key_name == expected_char
         
         typing_results.append(is_correct)
         
@@ -66,6 +83,20 @@ def create_practice_page():
             errors_count = typing_results.count(False)
             correct_count = typing_results.count(True)
             accuracy = correct_count / characters_count * 100
+            is_passed = accuracy >= 95
+            
+            if not is_passed:
+                if 1 <= review <= len(LESSONS) and review_type in ('pair', 'all'):
+                    next_button.text = 'Повторить упражнение'
+                    restart_button.set_visibility(False)
+                
+                elif 1 <= lesson <= len(LESSONS):
+                    next_button.text = 'Повторить уровень'
+                    restart_button.set_visibility(False)
+                
+            else:
+                next_button.text = next_button_text
+                restart_button.set_visibility(True)
             
             speed_label.text = f'{speed:.0f}'
             accuracy_label.text = f'{accuracy:.1f}%'
@@ -79,7 +110,10 @@ def create_practice_page():
         
         current_position = 0
         start_time = None
+        
         typing_results.clear()
+        
+        next_button.text = next_button_text
         
         text_element.set_visibility(True)
         results_container.set_visibility(False)
@@ -89,7 +123,36 @@ def create_practice_page():
         
     def next_practice():
         nonlocal practice_text
-
+        
+        correct_count = typing_results.count(True)
+        characters_count = len(typing_results)
+        accuracy = correct_count / characters_count * 100
+        is_passed = accuracy >= 95
+        
+        if 1 <= review <= len(LESSONS) and review_type in ('pair', 'all'):
+            
+            if not is_passed:
+                restart_practice()
+            else:
+                complete_review(review, review_type)
+                ui.navigate.to('/lessons')
+            
+            return
+        
+        if 1 <= lesson <= len(LESSONS):
+            
+            if not is_passed:
+                restart_practice()
+                return
+            
+            complete_level(lesson, level)
+            
+            if level < 5:
+                ui.navigate.to(f'/practice?lesson={lesson}&level={level + 1}')
+            else:
+                ui.navigate.to('/lessons')
+            return
+        
         selected_text = get_random_text()
         practice_text = selected_text['text']
 
@@ -104,6 +167,23 @@ def create_practice_page():
                 on_click=lambda: ui.navigate.to('/')
             ).props('flat color=none no-caps').classes('practice-back-button')
         with ui.column().classes('practice-text-container'):
+            
+            if 1 <= review <= len(LESSONS) and review_type in ('pair', 'all'):
+                if review_type == 'all':
+                    review_title = f'Большое повторение — уроки 1–{review}'
+                else:
+                    review_title = f'Повторение — уроки {review - 1}–{review}'
+                
+                ui.label(review_title).classes('practice-lesson-info')
+            
+            elif 1 <= lesson <= len(LESSONS):
+                
+                letters_title = ', '.join(LESSONS[lesson - 1]).upper()
+                
+                ui.label(
+                    f'Урок {lesson} — {letters_title} | Уровень {level} из 5'
+                ).classes('practice-lesson-info')
+            
             ui.label('ТЕКСТ ДЛЯ ПЕЧАТИ')
             
             text_element = ui.html('', sanitize=False).classes('practice-text w-full')
@@ -230,14 +310,23 @@ def create_practice_page():
                         errors_label = ui.label('0').classes('practice-stat-value')
                         ui.label('Ошибки').classes('practice-stat-name')
                 
-                ui.button(
-                    'Следующая тренировка',
-                    on_click=next_practice
+                if 1 <= review <= len(LESSONS) and review_type in ('pair', 'all'):
+                    next_button_text = 'Завершить упражнение'
+                
+                elif 1 <= lesson <= len(LESSONS):
+                    if level < 5:
+                        next_button_text = 'Следующий уровень'
+                    else:
+                        next_button_text = 'Завершить урок'
+                else:
+                    next_button_text = 'Следующая тренировка'
+                
+                next_button = ui.button(
+                    next_button_text,on_click=next_practice
                 ).props('color=none no-caps unelevated').classes('practice-next-button')
-
-                ui.button(
-                    'Начать заново',
-                    on_click=restart_practice
+                
+                restart_button = ui.button(
+                    'Начать заново',on_click=restart_practice
                     ).props('color=none no-caps unelevated').classes('practice-restart-button')
           
         

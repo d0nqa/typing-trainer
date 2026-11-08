@@ -5,6 +5,12 @@ body {
 }
 
 
+.home-page {
+    min-height: calc(100vh - 32px);
+    margin: 0 !important;
+}
+
+
 .home-card {
     background-color: #383C45 !important;
     border: 1px solid #616670;
@@ -594,4 +600,23 @@ body {
 
 body:has(.practice-page) .nicegui-content {
     padding: 0;
+}
+
+
+.practice-lesson-info {
+    color: #B49CFF !important;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+
+.lesson-progress-completed {
+    background-color: #B49CFF !important;
+}
+
+
+.review-progress-bar {
+    width: 100%;
+    flex: 1;
 }

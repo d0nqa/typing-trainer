@@ -21,14 +21,17 @@ def lessons():
     create_lessons_page()
 
 @ui.page('/practice')
-def practice():
-    create_practice_page()
+def practice(
+    lesson: int = 0,
+    level: int = 1,
+    review: int = 0,
+    type: str = ''
+    ):
+    create_practice_page(lesson, level, review, type)
 
 @ui.page('/settings')
 def settings():
     create_settings_page()
 
 
-ui.run(storage_secret=os.environ.get(
-    'STORAGE_SECRET', 'typing-trainer-local-dev'
-    ))
+ui.run(storage_secret=os.environ.get('STORAGE_SECRET', 'typing-trainer-local-dev'))
